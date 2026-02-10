@@ -1,10 +1,16 @@
 #!/usr/bin/env node
 
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+import { resolveExaApiKey } from "./env.mjs";
+
 const DEFAULT_TIMEOUT = 30000;
 const DEFAULT_ENDPOINT = "https://mcp.exa.ai/mcp";
 const DEFAULT_TYPE = "auto";
 const DEFAULT_NUM_RESULTS = 5;
 const DEFAULT_LIVECRAWL = "fallback";
+const PROJECT_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 const FIXED_HEADERS = {
   "sec-ch-ua-platform": "\"macOS\"",
@@ -95,7 +101,7 @@ let type = DEFAULT_TYPE;
 let numResults = DEFAULT_NUM_RESULTS;
 let livecrawl = DEFAULT_LIVECRAWL;
 let timeout = DEFAULT_TIMEOUT;
-let exaApiKey = process.env.EXA_API_KEY ?? "";
+let exaApiKey = resolveExaApiKey({ projectRoot: PROJECT_ROOT });
 let endpoint = DEFAULT_ENDPOINT;
 let raw = false;
 

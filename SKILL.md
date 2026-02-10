@@ -8,7 +8,7 @@ metadata: {"openclaw":{"emoji":"🔎","requires":{"bins":["node"]}}}
 
 通过 Exa MCP (`https://mcp.exa.ai/mcp`) 执行 `web_search_exa`，并解析 `text/event-stream` 响应。
 
-环境变量 `EXA_API_KEY` 可选, 可在 https://dashboard.exa.ai/api-keys 获取
+环境变量 `EXA_API_KEY` 可选, 可在 https://dashboard.exa.ai/api-keys 获取。脚本会自动读取当前工作目录或 skill 根目录下的 `.env` 文件。
 
 ## Usage
 
@@ -21,6 +21,10 @@ node {baseDir}/scripts/search.mjs "美国最新娱乐新闻" --num-results 5 --t
 node {baseDir}/scripts/search.mjs "美国最新娱乐新闻" --exa-api-key YOUR_EXA_KEY
 
 EXA_API_KEY=YOUR_EXA_KEY node {baseDir}/scripts/search.mjs "美国最新娱乐新闻"
+
+# 或在 .env 文件中配置（自动加载）
+# EXA_API_KEY=YOUR_EXA_KEY
+node {baseDir}/scripts/search.mjs "美国最新娱乐新闻"
 ```
 
 ## Options
